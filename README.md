@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build project with MPLAB X IDE
-        uses: aeraterta/mplab-xc8-action@v1.0.0
+        uses: aeraterta/mplab-xc32-action@v1.0.0
         with:
           project: firmware.X
           packs: "ATtiny_DFP=3.1.260,Another_DFP=1.2.3"

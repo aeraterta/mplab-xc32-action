@@ -24,7 +24,7 @@ RUN wget --referer="https://www.microchip.com/en-us/tools-resources/develop/mpla
     -O /tmp/MPLABX-v${MPLABX_VERSION}-linux-installer.tar \
     https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
     cd /tmp && \
-    tar -xvf MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
+    tar -xf MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
     cd mplabx-installer && \
     ./install.sh --mode silent && \
     rm -rf /tmp/MPLABX-v${MPLABX_VERSION}-linux-installer.tar /tmp/mplabx-installer

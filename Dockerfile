@@ -23,7 +23,7 @@ RUN wget -q --referer="https://www.microchip.com/en-us/tools-resources/develop/m
     tar -xf MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
     mv "MPLABX-v${MPLABX_VERSION}-linux-installer.sh" mplabx && \
     chmod +x mplabx && \
-    ./mplabx -- --unattendedmodeui none --mode unattended --ipe 0 --collectInfo 0 --installdir /opt/mplabx --16bitmcu 0 --32bitmcu 1 --othermcu 0 && \
+    sudo ./mplabx -- --unattendedmodeui none --mode unattended --ipe 0 --collectInfo 0 --installdir /opt/mplabx --16bitmcu 0 --32bitmcu 1 --othermcu 0 && \
     rm mplabx
 
 # Download and install XC32 compiler

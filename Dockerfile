@@ -28,9 +28,9 @@ RUN wget -q --referer="https://www.microchip.com/en-us/tools-resources/develop/m
 
 # Download and install XC32 compiler
 RUN wget -q -O /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run \
-    <YOUR_HOSTED_LINK_FOR_XC32> && \
+    https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run && \
     chmod +x /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run && \
-    /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run --mode silent > /dev/null 2>&1
+    sudo /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run --mode silent > /dev/null 2>&1
 
 # Install DFPs
 RUN if [ -n "$DFP_PACKS" ]; then \

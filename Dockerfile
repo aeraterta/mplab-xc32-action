@@ -25,9 +25,10 @@ RUN wget --referer="https://www.microchip.com/en-us/tools-resources/develop/mpla
     https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
     cd /tmp && \
     tar -xf MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
-    cd mplabx-installer && \
-    ./install.sh --mode silent && \
-    rm -rf /tmp/MPLABX-v${MPLABX_VERSION}-linux-installer.tar /tmp/mplabx-installer
+    mv "MPLABX-v${MPLABX_VERSION}-linux-installer.sh" mplabx && \
+    chmod +x mplabx && \
+    sudo ./mplabx -- --unattendedmodeui none --mode unattended --ipe 0 --collectInfo 0 --installdir /opt/mplabx --16bitmcu 0 --32bitmcu 1 --othermcu 0 && \
+    rm mplabx
 
 # Download and install XC32 compiler
 RUN wget -O /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run \

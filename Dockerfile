@@ -8,7 +8,7 @@ ARG DFP_PACKS=""
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get install -y -qq \
     wget \
     tar \
     libx11-dev \
@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install MPLAB X IDE
-RUN wget --referer="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide" \
+RUN wget -q --referer="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide" \
     -O /tmp/MPLABX-v${MPLABX_VERSION}-linux-installer.tar \
     https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v${MPLABX_VERSION}-linux-installer.tar && \
     cd /tmp && \
@@ -31,10 +31,10 @@ RUN wget --referer="https://www.microchip.com/en-us/tools-resources/develop/mpla
     rm mplabx
 
 # Download and install XC32 compiler
-RUN wget -O /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run \
+RUN wget -q -O /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run \
     <YOUR_HOSTED_LINK_FOR_XC32> && \
     chmod +x /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run && \
-    /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run --mode silent
+    /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run --mode silent > /dev/null 2>&1
 
 # Install DFPs
 RUN if [ -n "$DFP_PACKS" ]; then \
@@ -42,7 +42,7 @@ RUN if [ -n "$DFP_PACKS" ]; then \
     chmod +x /opt/mplabx/mplab_platform/bin/packmanagercli.sh; \
     for pack in $(echo $DFP_PACKS | tr "," "\n"); do \
         IFS="=" read -r pack_name pack_version <<< "$pack"; \
-        /opt/mplabx/mplab_platform/bin/packmanagercli.sh --install-pack "$pack_name" --version "$pack_version"; \
+        /opt/mplabx/mplab_platform/bin/packmanagercli.sh --install-pack "$pack_name" --version "$pack_version" > /dev/null 2>&1; \
     done; \
 fi
 

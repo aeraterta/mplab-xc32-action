@@ -1,5 +1,5 @@
-name: MPLABX6.04 and XC8 Compiler Action
-description: This action builds a MPLAB X / XC8 project in a Linux container.
+name: MPLABX v6.20 and XC32 v4.45 Compiler Action
+description: This action builds a MPLAB X / XC32 project in a Linux container.
 branding:
   icon: package
   color: gray-dark

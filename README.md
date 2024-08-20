@@ -59,3 +59,4 @@ jobs:
 # Acknowledgements
 
 Inspired by <https://github.com/velocitek/ghactions-mplabx>.  
+Inspired by <https://github.com/jeandeaual/mplabx-xc8-build-action>.

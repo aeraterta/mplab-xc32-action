@@ -35,10 +35,11 @@ RUN wget -nv -O /tmp/xc32 "https://ww1.microchip.com/downloads/aemDocuments/docu
 # Install DFPs
 RUN if [ -n "$DFP_PACKS" ]; then \
     echo "Installing DFPs: $DFP_PACKS"; \
-    chmod +x /opt/mplabx/mplab_platform/bin/packmanagercli.sh; \
-    for pack in $(echo $DFP_PACKS | tr "," "\n"); do \
-        IFS="=" read -r pack_name pack_version <<< "$pack"; \
-        /opt/mplabx/mplab_platform/bin/packmanagercli.sh --install-pack "$pack_name" --version "$pack_version" > /dev/null 2>&1; \
+    sudo chmod +x /opt/mplabx/mplab_platform/bin/packmanagercli.sh; \
+    for pack in $(echo "$DFP_PACKS" | tr "," "\n"); do \
+        pack_name=$(echo "$pack" | cut -d '=' -f 1); \
+        pack_version=$(echo "$pack" | cut -d '=' -f 2); \
+        sudo /opt/mplabx/mplab_platform/bin/packmanagercli.sh --install-pack "$pack_name" --version "$pack_version" > /dev/null 2>&1; \
     done; \
 fi
 

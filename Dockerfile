@@ -27,11 +27,11 @@ RUN wget -q --referer="https://www.microchip.com/en-us/tools-resources/develop/m
     rm mplabx
 
 # Download and install XC32 compiler
-RUN wget -q -O /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run \
-    https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run && \
-    chmod +x /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run && \
-    sudo /tmp/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run --mode silent > /dev/null 2>&1
-
+RUN wget -nv -O /tmp/xc32 "https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc32-v${X32_VERSION}-full-install-linux-x64-installer.run" && \
+    chmod +x /tmp/xc32 && \
+    /tmp/xc32 --mode silent --unattendedmodeui none --netservername localhost --LicenseType FreeMode --prefix "/opt/microchip/xc32/v${X32_VERSION}" && \
+    rm /tmp/xc32
+    
 # Install DFPs
 RUN if [ -n "$DFP_PACKS" ]; then \
     echo "Installing DFPs: $DFP_PACKS"; \

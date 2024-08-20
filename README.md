@@ -5,7 +5,7 @@ This action will build a MPLAB X / XC32 project.
 It runs on Linux Ubuntu 20.04 and uses:
 
 * [MPLAB X](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide) v6.20
-* [XC32](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/xc32) v4.42
+* [XC32](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/xc32) v4.45
 
 ## Inputs
 

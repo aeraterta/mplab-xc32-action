@@ -51,7 +51,7 @@ jobs:
         uses: aeraterta/mplab-xc32-action@v1.0.0
         with:
           project: firmware.X
-          packs: "ATtiny_DFP=3.1.260,Another_DFP=1.2.3"
+          packs: "PIC32MZ-DA_DFP=1.5.231"
           configuration: default
 
 ```

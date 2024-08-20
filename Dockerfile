@@ -15,6 +15,11 @@ RUN apt-get update -qq && apt-get install -y -qq \
     libusb-1.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
+# Install make and gcc
+RUN apt-get update && \
+    apt-get install -y make gcc && \
+    rm -rf /var/lib/apt/lists/*
+
 # Download and install MPLAB X IDE
 RUN wget -q --referer="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide" \
     -O /tmp/MPLABX-v${MPLABX_VERSION}-linux-installer.tar \
